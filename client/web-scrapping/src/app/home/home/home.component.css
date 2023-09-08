@@ -1,0 +1,122 @@
+/*.form1{*/
+/*  display:flex;*/
+/*  gap: 10rem;*/
+/*}*/
+
+
+
+.form1{
+  display:flex;
+  justify-content:center;
+}
+.password{
+  display:flex;
+  flex-direction:column;
+}
+
+
+.four-field{
+  display:flex;
+  flex-wrap: wrap;
+  gap:2rem;
+  }
+
+.form3{
+  display: flex;
+  gap: 2rem;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+h1{
+  display:flex;
+  justify-content:center;
+  background: #d4d4ec;
+  padding: 1.5rem;
+}
+
+h2{
+  display:flex;
+  justify-content:center;
+  background: #d4d4ec;
+  padding: 1.5rem;
+}
+
+
+.inputs{
+  margin-bottom:1rem;
+
+}
+
+
+table, th, td {
+   border: 1px solid;
+
+ }
+
+.table{
+  display:flex;
+  justify-content:center;
+}
+table{
+  background: rgba(144, 198, 231, 0.92);
+}
+
+.form3{
+  margin-bottom:2rem;
+}
+
+label{
+  margin: 0.5rem 0;
+  font-size:larger;
+  font-family:"Rage Italic" ;
+
+}
+
+.line{
+  border-bottom:10px solid #004acb;
+}
+
+
+
+.seach-field, .source-field,.index-field{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.input{width:30rem;}
+
+td{width: 25rem;}
+
+.form3{
+display:flex;
+align-items:center;}
+
+
+.radios{
+  height: 2rem;
+  display: flex;
+}
+
+.search{
+display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+
+span{
+  color:red;
+}
+
+.btn{
+  margin-bottom:1rem;
+}
+
+
+@media only screen and (min-width: 1000px) {
+  body {
+    background-color: lightblue;
+  }
+}

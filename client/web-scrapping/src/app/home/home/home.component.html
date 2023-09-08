@@ -1,0 +1,123 @@
+<div *ngIf="loading">
+<p-progressBar mode="indeterminate" [style]="{'height': '3px'}"></p-progressBar>
+</div>
+<h1> <i class="pi pi-sitemap" style="font-size: 2rem"> Cyber web-scraper</i></h1>
+<div>
+
+<form name="form1" (ngSubmit)="indexPage(indexForm)" #indexForm="ngForm" >
+  <div class="index-field">
+    <input  type="text" class="input"
+           [(ngModel)]="seedUrl"
+           pInputText
+           name="seedUrl"
+           placeholder="Enter URL to index">
+
+
+        <input type="text" pInputText class="input"
+           [(ngModel)]="maxPages"
+           name="pages"
+           placeholder="Max number of pages">
+        <span *ngIf="maxPages>500">You can index max 500 pages</span>
+    <button class="index" pButton [disabled]="maxPages>500 || loading" type="submit">Index</button>
+  </div>
+</form>
+
+<form class="form3" name="form3" #reset="ngForm" (ngSubmit)="resetPage()">
+  <button class="reset" pButton type="submit">Reset the URLs</button>
+</form>
+
+<form name="form2" #searchForm="ngForm" (ngSubmit)="searchPage()">
+  <h2>Select one of those to search</h2>
+
+  <div class="search">
+  <input type="text"
+         required
+         [(ngModel)]="term"
+         #index="ngModel"
+         pInputText
+         name="searchFile"
+         placeholder="Enter word to searchFile">
+
+    <div class="radios"
+         ngModelGroup="role"
+         requireCheckbox
+         #role="ngModelGroup">
+    <input type="radio"
+           [(ngModel)]="where"
+           id="title"
+           name="radios"
+           value="title">
+    <label for="title">Title</label>
+    <input
+      [(ngModel)]="where"
+      type="radio"
+      id="keywords"
+      name="radios"
+      value="keywords">
+    <label for="keywords">Keywords</label><br>
+
+    <input
+      [(ngModel)]="where"
+      type="radio"
+      id="description"
+      name="radios"
+      value="description">
+    <label for="description">Description</label>
+
+    <input
+      [(ngModel)]="where"
+      type="radio"
+      id="all"
+      name="radios"
+      value="all">
+    <label for="all">All</label>
+  </div>
+  <button pButton type="submit" [disabled]="loading" class="btn">Search file</button>
+  <button pButton type="submit" (click)="listPage()" [disabled]="loading">List all URLs</button>
+  </div>
+
+</form>
+<h2>Show source code</h2>
+<form name="form4"
+      #source="ngForm"
+      (ngSubmit)="showSource()">
+
+  <div class="source-field">
+    <label>Password </label>
+    <p-password name="pass" [(ngModel)]="password" [toggleMask]="true" required="true"></p-password>
+    <code [innerHTML]="source$|async"> </code>
+    <button pButton type="submit" >
+      Show source
+    </button>
+  </div>
+</form>
+
+  <ng-container>
+
+    <h2>Table with results</h2>
+    <div *ngIf="(pages$ | async) as pages">
+      <div class="table" >
+
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>URLs</th>
+        <th>Title</th>
+        <th>Keywords</th>
+        <th>Description</th>
+      </tr>
+      <tr *ngFor="let page of pages; index as i">
+        <td>{{i}}</td>
+        <td><a href="{{page.url}}" target="_blank">{{page.url}}</a></td>
+        <td>{{page.title}}</td>
+        <td>{{page.keywords}}</td>
+        <td>{{page.description}}</td>
+      </tr>
+    </table>
+    </div>
+    </div>
+  </ng-container>
+
+<!--<div class="line"></div>-->
+
+</div>
